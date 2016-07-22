@@ -27,6 +27,7 @@ plot(mydata$Age, mydata$Salary)
 
 plot(mydata$Position, mydata$Salary)
 
+
 #corellation between category and numeric col
 library(ggplot2)
 
@@ -49,4 +50,19 @@ ggplot(mydata, aes(x = Office, fill = Salary)) +
       ylab("Salary") +
 
       labs(fill = "Salary")
+
+
+#box plot
+#1 and 4 line  - first line
+# box second and third quartile
+boxplot(mydata$Age)
+
+
+#ggplot2 sample data diamond
+head(diamonds)
+
+#qplot(mydata$Age, mydata$Office,data = mydata, colour=mydata$Gender)
+
+qplot(diamonds$carat, diamonds$price,data = diamonds, colour=diamonds$clarity)
+
 #---- 
