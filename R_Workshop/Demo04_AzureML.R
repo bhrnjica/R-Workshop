@@ -24,16 +24,14 @@ dataset1$pclass <- as.factor(dataset1$pclass)
 dataset1$name <- as.character(dataset1$name)
 dataset1$age <- as.numeric(dataset1$age)
 
+#create new data from current
 newdata = data.frame(survived=dataset1$survived, pclass=dataset1$pclass, age=dataset1$age, sibp= dataset1$sibsp, parch= dataset1$parch,sex=  dataset1$sex, boat=dataset1$boat)
 
+#structure of the new data
 str(newdata)
 
+#create Age historgram
 hist(dataset1$age)
-
-
-# You'll see this output in the R Device port.
-# It'll have your stdout, stderr and PNG graphics device(s).
-#plot(dataset1$survival);
 
 
 

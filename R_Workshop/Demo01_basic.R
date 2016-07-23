@@ -100,7 +100,7 @@ mat1[2, 3] #get element of 2nd row and 3rd column
 mat1[2,] # the 2nd row 
 mat1[, 3] # the 3rd column 
 
-mat1[, c(1, 3)] # the 1st and 3rd columns 
+mat1[, c(1,3)] # the 1st and 3rd columns 
 
 #matrix operations
 
