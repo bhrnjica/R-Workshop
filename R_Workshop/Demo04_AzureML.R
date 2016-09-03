@@ -1,16 +1,16 @@
 
 # Map 1-based optional input ports to variables
-dataset1 <- maml.mapInputPort(1) # class: data.frame
+#dataset1 <- maml.mapInputPort(1) # class: data.frame
 #dataset2 <- maml.mapInputPort(2) # class: data.frame
 
 #local specific code # read data from txt file from the worksheet named mysheet
-#dataset1 <- read.csv(file = "Resource/titanic3.csv", header = TRUE, row.names = NULL, encoding = "UTF-8", sep = ",", dec = ".", quote = "\"", comment.char = "")
+dataset1 <- read.csv(file = "Resource/titanic3.csv", header = TRUE, row.names = NULL, encoding = "UTF-8", sep = ",", dec = ".", quote = "\"", comment.char = "")
 
 # Contents of optional Zip port are in ./src/
 # source("src/yourfile.R");
 # load("src/yourData.rdata");
 
-head(dataset1) #when data is big show only few first rows
+head(dataset1) #when data is big show only  first few rows
 
 
 # Get the summary of imported data

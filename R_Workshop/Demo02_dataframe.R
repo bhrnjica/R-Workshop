@@ -11,7 +11,7 @@ e_data <- read.xlsx("Resource/data_sample.xlsx", sheetName = "sample1")
 head(e_data) # view few rows to ge feel of the data
 
 length(e_data) # number of columns
-length(e_data$Ime) # number of rows 
+length(e_data$Name) # number of rows 
 
 
 str(e_data) # structure of the data
