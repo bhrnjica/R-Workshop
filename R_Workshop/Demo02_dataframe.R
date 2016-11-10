@@ -39,13 +39,13 @@ median(e_data$Age) # median
 
 var(e_data$Age)    #variance
 
-sd(e_data$Age)    # standard devijation of the age
-sqrt(var(e_data$Age)) # standard devijation calculated by variaance
+sd(e_data$Age)    # standard deviation of the age
+sqrt(var(e_data$Age)) # standard deviation calculated by variance
 
 min(e_data$Sallary)  # minumum sallary in the company
 max(e_data$Sallary)  # max sallary in the company
 
-range(e_data$Age)    # range of the Age of the company
+range(e_data$age)    # range of the Age of the company
 
 quantile(e_data$Age, probs = 0.4) # quantile calculation
 

@@ -35,7 +35,7 @@ library(ggplot2)
 ggplot(mydata, aes(x = mydata$Gender, fill = Salary)) + geom_bar(width = 0.5)
 
 
-#plot Sallary grouped by Smoker and Gender
+#
 
 ggplot(mydata, aes(x = Office, fill = Salary)) +
 
