@@ -1,2 +1,2 @@
 # R-Workshop
-Set of R demo samples used in Workshop.
+Set of R demo samples used in R Workshop, as well as conferences.
