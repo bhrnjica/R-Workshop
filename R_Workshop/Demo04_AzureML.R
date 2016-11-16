@@ -40,11 +40,37 @@ embarked_fun <- function(value) {
 #calculated column
 t_data[, "embarked_long"] <- sapply(t_data[, "embarked"], embarked_fun)
 str(t_data)
+
 #convert column to factor
 t_data$embarked_long = as.factor(t_data$embarked_long)
 #
 head(t_data$embarked_long)
 
+
+#missing value handling
+x <- length(names(t_data))#column name of t_data
+y <- cbind(names(t_data), 1:x)#missing value
+
+#how much missing values contain each column
+for (i in 1:x) {
+    y[i, 2] <- sum(is.na(t_data[, i]))
+}
+
+y
+#Age column contains significat number of missing value.
+#we should handle them somehow
+avr <- mean(t_data$age, na.rm = TRUE)
+
+for (i in 1:nrow(t_data)) {
+    if (is.na(t_data$age[i])) {
+        t_data$age[i] <-avr
+    }
+
+}
+#Check to make sure there are no more missing age values
+sum(is.na(t_data$age))
+
+#stats about data
 length(t_data) # number of columns
 length(t_data$survived) # number of rows 
 
@@ -79,9 +105,12 @@ plot(t_data$embarked_long, t_data$survived)
 # box second and third quartile
 boxplot(t_data$age)
 
-
+#qqplot 2
 library("ggplot2")
-qplot(t_data$survived, t_data$pclass, data = t_data, colour = t_data$sex)
+agePlot <- qplot(x = age, data = t_data, geom = "auto")
+
+agePlot <- agePlot + labs(title = "Starosna dob putnika")
+print(agePlot)
 
 #Broj putnika po po klasama
 ggplot(t_data) + aes(x = pclass, fill = pclass) + geom_bar() +
@@ -92,16 +121,16 @@ ggplot(t_data) + aes(x = pclass, fill = pclass) + geom_bar() +
         ggtitle("Broj putnika na Titaniku") +
 facet_grid(. ~ sex)
 
-#Broj putnika po po klasama, grupisano po ukrcajnim lukama 
+#Broj putnika po po klasama, grupisano po spolu i ukrcajnim lukama 
 ggplot(t_data) + aes(x = embarked_long, fill = survived) + geom_bar() +
         ggtitle("Broj putnika na Titaniku") +
 facet_grid(. ~ sex)
 
-#Broj putnika po klasama
+#Broj prezivjelih putnika po klasama
 ggplot(t_data) + aes(x = pclass, fill = survived) + geom_bar() +
     ggtitle("Broj putnika na Titaniku")
 
-#Broj putnika po klasama
+#Broj prezivjelih putnika putnika po klasama
 ggplot(t_data) + aes(x = pclass, fill = survived) + geom_bar() +
         ggtitle("Broj putnika na Titaniku") +
         facet_grid(. ~ sex)
@@ -110,6 +139,7 @@ ggplot(t_data) + aes(x = pclass, fill = survived) + geom_bar() +
 
 ##Machine learning preparation####
 #create new data from current
+
 data_to_model = data.frame(survived = t_data$survived, pclass = t_data$pclass, age = t_data$age, sibp = t_data$sibsp, parch = t_data$parch, sex = t_data$sex, embarked = t_data$embarked_long)
 
 #structure of the new data
